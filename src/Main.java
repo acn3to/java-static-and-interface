@@ -1,12 +1,12 @@
-import counter.Counter;
+import converter.TemperatureConverter;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Contagem inicial: " + Counter.getCount());
+        double celsius = 15;
+        double fahrenheit = TemperatureConverter.celsiusToFahrenheit(celsius);
+        System.out.println(celsius + "°C é igual a " + fahrenheit + "°F");
 
-        Counter counter1 = new Counter();
-        Counter counter2 = new Counter();
-
-        System.out.println("Após criar dois objetos Counter: " + Counter.getCount());
+        double convertedBack = TemperatureConverter.fahrenheitToCelsius(fahrenheit);
+        System.out.println(fahrenheit + "°F é igual a " + convertedBack + "°C");
     }
 }
