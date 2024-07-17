@@ -1,22 +1,24 @@
-import product.Product;
-import product.ProductManager;
+import bank.Bank;
+import bank.BankAccount;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Adicionando produtos...");
-        Product laptop = new Product("Laptop", 1200.00);
-        Product mouse = new Product("Mouse", 50.00);
+        BankAccount myAccount = Bank.openAccount("123456", "Arnaldo Neto", 1000.00);
+        System.out.println("Conta aberta com sucesso: " + myAccount);
 
-        ProductManager.addProduct(laptop);
-        ProductManager.addProduct(mouse);
+        Bank.deposit("123456", 500.00);
+        System.out.println("Depósito realizado com sucesso. Saldo atualizado: " + myAccount.getBalance());
 
-        System.out.println("\nListando todos os produtos:");
-        ProductManager.listProducts();
+        boolean success = Bank.withdraw("123456", 200.00);
+        System.out.println((success ? "Saque realizado com sucesso. Saldo atualizado: " + myAccount.getBalance() : "Não foi possível realizar o saque. Saldo insuficiente."));
 
-        System.out.println("\nRemovendo um produto...");
-        ProductManager.removeProduct(1);
+        boolean transferSuccess = Bank.transfer("123456", "789012", 300.00);
+        System.out.println((transferSuccess ? "Transferência realizada com sucesso. Saldo da conta de origem atualizado: " + myAccount.getBalance() : "Falha na transferência. Verifique os números das contas e o saldo disponível."));
 
-        System.out.println("\nListando novamente para verificar a remoção:");
-        ProductManager.listProducts();
+        Bank.closeAccount("123456");
+        System.out.println("Conta fechada com sucesso.");
+
+        System.out.println("Contas bancárias abertas:");
+        Bank.listAccounts();
     }
 }
