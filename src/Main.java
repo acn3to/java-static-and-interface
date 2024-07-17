@@ -1,12 +1,12 @@
-import print.Document;
-import print.Image;
+import speak.Cat;
+import speak.Dog;
 
 public class Main {
     public static void main(String[] args) {
-        Document document = new Document();
-        Image image = new Image();
+        Dog dog = new Dog();
+        Cat cat = new Cat();
 
-        document.print();
-        image.print();
+        dog.speak();
+        cat.speak();
     }
 }
