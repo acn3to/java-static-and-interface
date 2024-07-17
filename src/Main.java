@@ -1,29 +1,17 @@
-import sort.BubbleSort;
-import sort.QuickSort;
+import currency.EurToThbConverter;
+import currency.UsdToEurConverter;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {64, 34, 25, 12, 22, 11, 90};
+        UsdToEurConverter usdToEurConverter = new UsdToEurConverter();
+        EurToThbConverter eurToThbConverter = new EurToThbConverter();
 
-        System.out.println("Array original:");
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
+        double usdAmount = 1000;
+        double convertedAmount = usdToEurConverter.convert(usdAmount, "USD", "EUR");
+        System.out.println(usdAmount + " USD é igual a " + convertedAmount + " EUR.");
 
-        BubbleSort bubbleSort = new BubbleSort();
-        bubbleSort.sort(array);
-        System.out.println("Array ordenado com Bubble Sort:");
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-
-        QuickSort quickSort = new QuickSort();
-        quickSort.sort(array);
-        System.out.println("Array ordenado com Quick Sort:");
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
+        double eurAmount = 500;
+        convertedAmount = eurToThbConverter.convert(eurAmount, "EUR", "THB");
+        System.out.println(eurAmount + " EUR é igual a " + convertedAmount + " THB.");
     }
 }
